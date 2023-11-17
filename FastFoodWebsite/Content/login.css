@@ -1,0 +1,51 @@
+﻿
+.contact-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.left {
+    background: url("./img/main_img.png") no-repeat center;
+    background-size: cover;
+    height: 100%;
+}
+
+.right {
+    padding: 25px 40px;
+}
+
+h2 {
+    position: relative;
+    padding: 0 0 10px;
+    margin-bottom: 10px;
+}
+
+    h2:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        height: 4px;
+        width: 50px;
+        border-radius: 2px;
+        background-color: #ff909d;
+    }
+
+
+@media screen and (max-width: 865px) {
+    .contact-box {
+        grid-template-columns: 2fr;
+    }
+
+    .left {
+        height: 400px;
+    }
+}

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<FastFoodWebsite.Models.CART>
+
+@{
+    ViewBag.Title = "ViewCart";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>ViewCart</h2>
+@if (ViewData["NoProduct"] != null)
+{
+    <h3>@ViewData["NoProduct"]</h3>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PRODUCTID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.USERID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QUANTITY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PRICE)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRODUCTID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USERID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QUANTITY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRICE)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Details", "Details", new { id=item.CARTID }) |
+                    </td>*@
+            </tr>
+        }
+
+    </table>
+}

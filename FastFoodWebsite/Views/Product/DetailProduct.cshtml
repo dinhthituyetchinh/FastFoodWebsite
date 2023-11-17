@@ -1,0 +1,40 @@
+﻿@model FastFoodWebsite.Models.PRODUCT
+@{
+    ViewBag.Title = "DetailProduct";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-5">
+            <img src="@Url.Content("~/img/imgProduct/"+Model.PICTURE)" style="padding: 10px" />
+        </div>
+        <div class="col-5">
+            <form method="post" action="~/Cart/AddCart">
+                <hr />
+                <dl class="dl-horizontal">
+                    <dd>
+                        @Html.DisplayFor(model => model.PRODUCTNAME)
+                    </dd>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PRODUCTDESCRIPTION)
+                    </dd>
+                    <input type="hidden" name="prodID" value="@Model.PRODUCTID"/>
+                    <label>Số lượng</label>
+                    <input type="number" name="num" />
+                    <label>Ghi chú</label>
+                    <textarea style="height: 50px" name="notes"></textarea>
+                </dl>
+                <button class="btn btn-danger" type="submit">MUA NGAY</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a href="@Url.Action("AddCart", "Cart", new {@prodID = Model.PRODUCTID})" class="btn btn-danger" type="submit">MUA NGAY</a>
+    <a href="~/Product/Menu" class="btn btn-danger">MUA TIẾP</a>
+</div>
+

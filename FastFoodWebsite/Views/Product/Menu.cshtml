@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@*<link rel="stylesheet" href="~/Content/menuCateory.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">*@
+<div style="padding: 20px">
+    <div class="wrapper">
+        <i id="left" class="fa-solid fa-angle-left"></i>
+        <ul class="carousel">
+            <li class="card">
+                <a href="@Url.Action("MenuPartial", "Product")">
+
+                    <div class="img"><img src="~/img/imgMenuCateory/BestSeller.png" alt="img" draggable="false"></div>
+                    <h3 class="text-uppercase">Best seller</h3>
+                </a>
+            </li>
+            
+            <li class="card">
+                <a href="@Url.Action("MenuPartial", "Product")">
+                    <div class="img"><img src="~/img/imgMenuCateory/drinks.jpg" alt="img" draggable="false"></div>
+                    <h3 class="text-uppercase">Drinks</h3>
+                </a>
+               
+            </li>
+            <li class="card">
+                
+                <div class="img"><img src="images/img-3.jpg" alt="img" draggable="false"></div>
+                <h3>Lariach French</h3>
+            </li>
+            <li class="card">
+                <div class="img"><img src="images/img-4.jpg" alt="img" draggable="false"></div>
+                <h3>James Khosravi</h3>
+            </li>
+            <li class="card">
+                <div class="img"><img src="images/img-6.jpg" alt="img" draggable="false"></div>
+                <h3>Donald Horton</h3>
+            </li>
+        </ul>
+        <i id="right" class="fa-solid fa-angle-right"></i>
+    </div>
+
+    <div>
+        @Html.Action("MenuPartial", "Product")
+    </div>
+</div>
+
+<script src="~/Scripts/menuScript.js"></script>
+

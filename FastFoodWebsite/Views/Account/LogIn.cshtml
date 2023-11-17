@@ -1,0 +1,62 @@
+﻿@model FastFoodWebsite.Models.AccountLogIn
+@{
+    ViewBag.Title = "LogIn";    
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+@*<link rel="stylesheet" href="@Url.Content("~/Content/LogIn.css")" />*@
+
+
+
+    <div class="contact-box">
+        <div class="left">
+            
+        </div>
+        <div class="right">
+            <h2 class="text-center">LOG IN</h2>
+            <form method="post" action="~/Account/LogIn">
+                @Html.ValidationSummary(true)
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(model => model.emailOrPhone, new
+               {
+                   @class = "form-control",
+                   id = "floatingInput",
+                   placeholder = "Email/ Phone"
+               })
+                    @*<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">*@
+                    <label for="floatingInput">Email/ Phone</label>
+                    @Html.ValidationMessageFor(model => model.emailOrPhone, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-floating">
+                    @Html.TextBoxFor(model => model.password, new
+               {
+                   @class = "form-control",
+                   type = "password",
+                   id = "floatingPassword",
+                   placeholder = "Password"
+               })
+                    @*<input  class="form-control" id="floatingPassword" placeholder="Password">*@
+                    <label for="floatingPassword">Password</label>
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto p-3">
+                    <button type="submit" class="btn btn-danger justify-content-lg-between">Log In</button>
+                </div>
+                <div class="text-center text-danger">
+                    @if (ViewData["status"] != null)
+                    {
+                        @ViewData["status"]
+                    }
+
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto text-center p-3">
+                    <p>Don't have an account? <br /><a href="@Url.Action("Register", "Account")">Sign In</a></p>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
+

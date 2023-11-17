@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB_FASTFOOD" Class="DB_FASTFOODDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=TUYETCHINH\SQLSERVER1;Initial Catalog=DB_FASTFOOD;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DB_FASTFOODConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ORDERDETAIL" Member="ORDERDETAILs">
+    <Type Name="ORDERDETAIL">
+      <Column Name="ORDERID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PRODUCTID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NOTES" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="QUANTITY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PRICE" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="ORDER_ORDERDETAIL" Member="ORDER" ThisKey="ORDERID" OtherKey="ORDERID" Type="ORDER" IsForeignKey="true" />
+      <Association Name="PRODUCT_ORDERDETAIL" Member="PRODUCT" ThisKey="PRODUCTID" OtherKey="PRODUCTID" Type="PRODUCT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ORDERS" Member="ORDERs">
+    <Type Name="ORDER">
+      <Column Name="ORDERID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="USERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TOTAL_PRICE" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="STATUS_OF_ORDER" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="ORDER_ORDERDETAIL" Member="ORDERDETAILs" ThisKey="ORDERID" OtherKey="ORDERID" Type="ORDERDETAIL" />
+      <Association Name="ORDER_ORDER" Member="ORDER2" ThisKey="ORDERID" OtherKey="ORDERID" Type="ORDER" Cardinality="One" />
+      <Association Name="ORDER_ORDER" Member="ORDER1" ThisKey="ORDERID" OtherKey="ORDERID" Type="ORDER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRODUCTS" Member="PRODUCTs">
+    <Type Name="PRODUCT">
+      <Column Name="PRODUCTID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PRODUCTNAME" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUCTDESCRIPTION" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="PICTURE" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CREATED_AT_OF_PROD" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATED_AT_OF_PROD" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="PROD_TYPE_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PRODUCT_ORDERDETAIL" Member="ORDERDETAILs" ThisKey="PRODUCTID" OtherKey="PRODUCTID" Type="ORDERDETAIL" />
+      <Association Name="PRODUCT_CART" Member="CARTs" ThisKey="PRODUCTID" OtherKey="PRODUCTID" Type="CART" />
+      <Association Name="PRODUCTTYPE_PRODUCT" Member="PRODUCTTYPE" ThisKey="PROD_TYPE_ID" OtherKey="PROD_TYPE_ID" Type="PRODUCTTYPE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRODUCTTYPE" Member="PRODUCTTYPEs">
+    <Type Name="PRODUCTTYPE">
+      <Column Name="PROD_TYPE_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PROD_TYPE_NAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="PRODUCTTYPE_PRODUCT" Member="PRODUCTs" ThisKey="PROD_TYPE_ID" OtherKey="PROD_TYPE_ID" Type="PRODUCT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ROLES" Member="ROLEs">
+    <Type Name="ROLE">
+      <Column Name="ROLEID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ROLENAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="ROLE_USER" Member="USERs" ThisKey="ROLEID" OtherKey="ROLEID" Type="USER" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USERS" Member="USERs">
+    <Type Name="USER">
+      <Column Name="USERID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FULLNAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PHONE" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DAYOFBIRTH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="USERADDRESS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="USERPASSWORD" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ROLEID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDAT" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATEDAT" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="USER_CART" Member="CARTs" ThisKey="USERID" OtherKey="USERID" Type="CART" />
+      <Association Name="ROLE_USER" Member="ROLE" ThisKey="ROLEID" OtherKey="ROLEID" Type="ROLE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CART" Member="CARTs">
+    <Type Name="CART">
+      <Column Name="CARTID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PRODUCTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="USERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QUANTITY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PRICE" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NOTES" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="PRODUCT_CART" Member="PRODUCT" ThisKey="PRODUCTID" OtherKey="PRODUCTID" Type="PRODUCT" IsForeignKey="true" />
+      <Association Name="USER_CART" Member="USER" ThisKey="USERID" OtherKey="USERID" Type="USER" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
