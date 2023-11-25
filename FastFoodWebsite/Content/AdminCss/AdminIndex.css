@@ -1,0 +1,71 @@
+﻿.details
+{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 30px;
+    margin-top: 10px;
+}
+
+.details .recentOrders
+{
+    position: relative;
+    display: grid;
+    min-height: 500px;
+    background: #ffffff;
+    padding: 15px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    border-radius: 20px;
+}
+
+.cardHeader
+{
+ display: flex;
+ justify-content: space-between;
+ align-items: flex-start;
+}
+
+    .cardHeader h3 {
+        font-weight: 500;
+        color: #b02a37;
+
+    }
+
+.details table
+{
+    width: 100%;
+    border-collapse:collapse;
+    margin-top: 10px;
+}
+.details table thead td
+{
+    font-weight: 600;
+    padding: 30px;
+}
+
+.details .recentOrders table thead tr 
+{
+    color: #dc3545;
+    border-bottom: 1px solid rgba(193, 36, 36);
+}
+
+.details .recentOrders table thead tr:last-child
+{
+    border-bottom: none;
+}
+    .details .recentOrders table thead tr:hover {
+        background: rgb(157, 62, 62);
+        color: white;
+    }
+.details .recentOrders table tbody tr:hover {
+    background: rgb(157, 62, 62);
+    color: white;
+}
+
+.details table tbody tr td
+{
+    padding: 15px;
+
+}

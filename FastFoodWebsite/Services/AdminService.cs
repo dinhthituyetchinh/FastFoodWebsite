@@ -116,7 +116,7 @@ namespace FastFoodWebsite.Services
                 return count > 0;
             }    
         }
-        public void updateSql (string name, string description, decimal price, string img, DateTime updateDate, int typeID)
+        public void updateSql (int id, string name, string description, decimal price, string img, DateTime updateDate, int typeID)
         {
             string updatedAt = updateDate.ToString().Substring(0, 10);
 
@@ -126,7 +126,7 @@ namespace FastFoodWebsite.Services
                 {
                     connection.Open();
                 }
-                string selectStr = "SET DATEFORMAT DMY;UPDATE PRODUCTS SET PRODUCTNAME = '" + name+ "', PRODUCTDESCRIPTION = '" + description+ "', PRICE ="+price+", PICTURE = '"+img+ "', UPDATED_AT_OF_PROD ='"+updatedAt + "' , PROD_TYPE_ID ="+typeID + "' WHERE PRODUCTID = '" + id+"'";
+                string selectStr = "SET DATEFORMAT DMY;UPDATE PRODUCTS SET PRODUCTNAME = '" + name+ "', PRODUCTDESCRIPTION = '" + description+ "', PRICE ="+price+", PICTURE = '"+img+ "', UPDATED_AT_OF_PROD ='"+updatedAt + "' , PROD_TYPE_ID ="+typeID + "' WHERE PRODUCTID =" + id;
                 SqlCommand cmd = new SqlCommand(selectStr, connection);
                 cmd.ExecuteNonQuery();
                 if (connection.State == System.Data.ConnectionState.Open)

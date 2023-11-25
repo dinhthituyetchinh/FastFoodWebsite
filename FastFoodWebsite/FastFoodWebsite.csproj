@@ -98,6 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AdminCss\AdminIndex.css" />
     <Content Include="Content\AdminCss\AdminProduct.css" />
     <Content Include="Content\AdminCss\AdminLayout.css" />
     <Content Include="Content\bootstrap-grid.css" />

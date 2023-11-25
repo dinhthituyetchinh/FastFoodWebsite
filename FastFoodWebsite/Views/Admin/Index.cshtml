@@ -1,4 +1,5 @@
-﻿
+﻿@model List<FastFoodWebsite.Models.ORDERDETAIL>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
@@ -11,14 +12,28 @@
         </div>
         <table>
             <thead>
-                <tr><td>
-                    </td>
+                <tr>
+                    <td>ORDER_ID</td>
+                    <td>PRODUCT_ID</td>
+                    <td>PRODUCT_NAME</td>
+                    <td>NOTES</td>
+                    <td>QUANTITY</td>
+                    <td>PRICE</td>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ORDERID</td>
+                        <td>@item.PRODUCTID</td>
+                        <td>@item.PRODUCT.PRODUCTNAME</td>
+                        <td>@item.NOTES</td>
+                        <td>@item.QUANTITY</td>
+                        <td>@item.PRICE</td>
+                    </tr>
+                }
 
-                </tr>
             </tbody>
         </table>
     </div>

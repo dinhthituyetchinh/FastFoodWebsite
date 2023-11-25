@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="~/Content/AdminCss/AdminLayout.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="@Url.Content("~/Content/AdminCss/AdminProduct.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/AdminCss/AdminIndex.css")" />
 
 
 </head>
@@ -23,7 +24,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="@Url.Action("Index", "Admin")">
                         <span class="icon"><i class='bx bx-home'></i></span>
                         <span class="title">Dashboard</span>
                     </a>

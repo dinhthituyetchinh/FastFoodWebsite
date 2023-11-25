@@ -11,9 +11,11 @@ namespace FastFoodWebsite.Controllers
     {
         // GET: Admin
         AdminService adminService = new AdminService();
+        DB_FASTFOODDataContext db = new DB_FASTFOODDataContext();
         public ActionResult Index()
         {
-            return View();
+            var orderList = db.ORDERDETAILs.ToList();
+            return View(orderList);
         }
         public ActionResult ViewProduct()
         {
@@ -91,7 +93,7 @@ namespace FastFoodWebsite.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    adminService.updateSql(product.productName, product.productDescription, product.price, product.images, product.UpdatedDate, product.productTypeID);
+                    adminService.updateSql(product.productID, product.productName, product.productDescription, product.price, product.images, product.UpdatedDate, product.productTypeID);
                     return RedirectToAction("ViewProduct");
                 }
                 else
