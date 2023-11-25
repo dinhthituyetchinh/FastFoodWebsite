@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/AdminCss/AdminLayout.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="~/Content/AdminCss/AdminStyle.css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/AdminCss/AdminProduct.css")" />
 
 
 </head>
 <body>
-    <div class="container">
-        <div class="nav">
+    <div class="containerAdmin">
+        <div class="navAdmin">
             <ul>
                 <li>
                     <a href="#">
@@ -27,17 +29,18 @@
                     </a>
                 </li>
                 <li>
+                    <a href="@Url.Action("ViewProduct", "Admin")">
+                        <span class="icon"><i class='bx bx-food-menu'></i></span>
+                        <span class="title">Products</span>
+                    </a>
+                </li>
+                <li>
                     <a href="#">
                         <span class="icon"><i class='bx bxs-user-account'></i></span>
                         <span class="title">Customers</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"><i class='bx bx-chat'></i></span>
-                        <span class="title">Message</span>
-                    </a>
-                </li>
+
                 <li>
                     <a href="#">
                         <span class="icon"><i class='bx bx-help-circle'></i></span>
@@ -72,7 +75,7 @@
                     <i class='bx bx-menu'></i>
                 </div>
 
-                <div class="search">
+                <div class="searchAdmin">
                     <label>
                         <input type="text" placeholder="Search here" />
                         <i class='bx bx-search-alt-2'></i>
@@ -85,29 +88,29 @@
             </div>
 
             <!-- card -->
-            <div class="card-box">
-                <div class="card">
+            <div class="card-boxAdmin">
+                <div class="cardAdmin">
                     <div>
                         <div class="numbers">1.504</div>
                         <div class="card-name">DailyViews</div>
                     </div>
                     <div class="icon-card"><ion-icon name="eye-outline"></ion-icon></div>
                 </div>
-                <div class="card">
+                <div class="cardAdmin">
                     <div>
                         <div class="numbers">200</div>
                         <div class="card-name">Comments</div>
                     </div>
                     <div class="icon-card"><ion-icon name="chatbox-outline"></ion-icon></div>
                 </div>
-                <div class="card">
+                <div class="cardAdmin">
                     <div>
                         <div class="numbers">100</div>
                         <div class="card-name">Sales</div>
                     </div>
                     <div class="icon-card"><i class='bx bx-cart'></i></div>
                 </div>
-                <div class="card">
+                <div class="cardAdmin">
                     <div>
                         <div class="numbers">$25.987</div>
                         <div class="card-name">Earning</div>
@@ -115,17 +118,16 @@
                     <div class="icon-card"><ion-icon name="cash-outline"></ion-icon></div>
                 </div>
             </div>
-            <div></div>
+            <div>
+                @RenderBody()
+            </div>
         </div>
 
     </div>
 
-
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <div>
-        @RenderBody()
-    </div>
+
 </body>
 </html>

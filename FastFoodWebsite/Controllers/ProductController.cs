@@ -1,4 +1,5 @@
 ﻿using FastFoodWebsite.Models;
+using FastFoodWebsite.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace FastFoodWebsite.Controllers
     {
         // GET: Product
         DB_FASTFOODDataContext db = new DB_FASTFOODDataContext();
+
         public ActionResult MenuPartial()
         {
             var product = db.PRODUCTs.ToList();
@@ -26,5 +28,6 @@ namespace FastFoodWebsite.Controllers
             PRODUCT p = db.PRODUCTs.Single(ma => ma.PRODUCTID == id);
             return View(p);
         }
+       
     }
 }

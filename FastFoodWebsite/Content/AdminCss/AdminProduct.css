@@ -1,0 +1,14 @@
+﻿
+.mainAddProduct {
+    width: 800px;
+    padding: 80px;
+    display: block;
+    margin: auto;
+    background-color: #ffff;
+    transition: 0.5s;
+}
+
+.mainProduct
+{
+    overflow-block:auto;
+}

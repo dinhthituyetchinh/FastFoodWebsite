@@ -12,21 +12,21 @@
 }
 else
 {
+<form method="post" action="~/Order/OrderView">
     <table class="table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.PRODUCTID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.USERID)
+                Số lượng
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.QUANTITY)
+                Giá
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PRICE)
+                Ghi chú
             </th>
-            <th></th>
         </tr>
 
         @foreach (var item in Model)
@@ -36,19 +36,40 @@ else
                     @Html.DisplayFor(modelItem => item.PRODUCTID)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.USERID)
+                    <input type="number" class="changePrice" value="@item.QUANTITY" />
+                    @*@Html.DisplayFor(modelItem => item.QUANTITY)*@
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.QUANTITY)
-                </td>
-                <td>
+                <td class="price">
                     @Html.DisplayFor(modelItem => item.PRICE)
                 </td>
-                @*<td>
-                        @Html.ActionLink("Details", "Details", new { id=item.CARTID }) |
-                    </td>*@
-            </tr>
-        }
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOTES)
+                </td>
+                <td>
 
+                    <a href="@Url.Action("DetailProduct", "Product", new {@id = item.PRODUCTID})">
+                        <div class="img"><img src="~/img/imgOfCart/icons8-edit-64.png" alt="img"></div>
+                    </a>
+                </td>
+
+                <td>
+
+                    <a href="@Url.Action("Deleted", "Cart", new {@prodID = item.PRODUCTID})">
+                        <div class="img"><img src="~/img/imgOfCart/icons8-delete-64.png" alt="img"></div>
+                    </a>
+
+                </td>
+
+            </tr>
+
+        }
+        <tr>
+            <button class="btn btn-danger" type="submit">CHECK OUT</button>
+
+        </tr>
     </table>
+
+</form>
+
+    <script src="~/Scripts/Cart.js"></script>
 }

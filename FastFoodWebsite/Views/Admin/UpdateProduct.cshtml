@@ -1,0 +1,100 @@
+﻿@model FastFoodWebsite.Models.Admin_Product
+
+@{
+    ViewBag.Title = "UpdateProduct";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<div class="mainAddProduct">
+    <h2 class="text-center p-3">UPDATES PRODUCT</h2>
+    <form method="post" action="~/Admin/UpdateProduct">
+        <div class="form-floating mb-3">
+            @Html.TextBoxFor(model => model.productName, new
+           {
+               @class = "form-control",
+               id = "productName",
+               placeholder = "Product Name",
+               value = "name"
+           })
+            <label for="productName">Product Name</label>
+            @Html.ValidationMessageFor(model => model.productName, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-floating mb-3">
+            @Html.TextAreaFor(model => model.productDescription, new
+       {
+           @class = "form-control",
+           id = "productDescription",
+           placeholder = "Product Description",
+           value = "description"
+       })
+            <label for="productDescription">Product Description</label>
+            @Html.ValidationMessageFor(model => model.productDescription, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-floating mb-3">
+            @Html.TextBoxFor(model => model.price, new
+       {
+           @class = "form-control",
+           id = "price",
+           placeholder = "Price",
+           value = "price"
+       })
+            <label for="price">Price</label>
+            @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-floating mb-3">
+
+            @Html.TextBoxFor(model => model.images, new
+       {
+           @class = "form-control",
+           type = "file",
+           id = "image",
+           placeholder = "Image",
+           value = "img"
+       })
+            <label for="Address">Image</label>
+            @Html.ValidationMessageFor(model => model.images, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-floating mb-3">
+            @Html.TextBoxFor(model => model.UpdatedDate, new
+       {
+           @class = "form-control",
+           type = "date",
+           id = "UpdatedDate",
+           placeholder = "Updated Date",
+           value = "updatedDate"
+       })
+            <label for="UpdatedDate">Updated Date</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            @Html.DropDownListFor(model => model.productTypeID, new List<SelectListItem>
+       {
+           new SelectListItem {Text = "1. Drink", Value = "1"},
+           new SelectListItem {Text = "2. Combo", Value = "2"},
+           new SelectListItem {Text = "3. Pizza", Value = "3"},
+           new SelectListItem {Text = "4. Snack", Value = "4"},
+           new SelectListItem {Text = "5. Fried chicken", Value = "5"}
+
+
+       }, "Select product type", new
+       {
+           @class = "form-control",
+           id = "productType",
+           value = "typeID"
+       })
+            <label for="productType">Product Type</label>
+            @Html.ValidationMessageFor(model => model.productTypeID, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-danger justify-content-lg-between">Updates Product</button>
+        </div>
+
+    </form>
+</div>
