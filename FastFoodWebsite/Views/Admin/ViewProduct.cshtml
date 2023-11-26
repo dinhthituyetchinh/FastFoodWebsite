@@ -5,8 +5,8 @@
 }
 
 
-<div class="mainProduct">
-    <table class="table-responsive align-middle table-sm">
+<div class="details">
+    <table class="table">
         <thead>
             <tr>
                 <th>PRODUCT ID</th>
@@ -29,7 +29,7 @@
                     <td>@item.productName</td>
                     <td>@item.productDescription</td>
                     <td>@item.price</td>
-                    <td>@item.images</td>
+                    <td><img src="@Url.Content("~/img/imgProduct/"+item.images)" width="70%" height="70%" style="padding: 5px" /></td>
                     <td>@item.CreatedDate</td>
                     <td>@item.UpdatedDate</td>
                     <td>@item.productTypeID</td>

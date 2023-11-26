@@ -13,6 +13,13 @@ namespace FastFoodWebsite.Controllers
         {
             return View();
         }
-       
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
+        public ActionResult Contact()
+        {
+            return View();
+        }
     }
 }

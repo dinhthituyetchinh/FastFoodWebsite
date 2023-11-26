@@ -98,6 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AboutUsCss.css" />
     <Content Include="Content\AdminCss\AdminIndex.css" />
     <Content Include="Content\AdminCss\AdminProduct.css" />
     <Content Include="Content\AdminCss\AdminLayout.css" />
@@ -118,6 +119,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\img\main_img.png" />
+    <Content Include="Content\img\tuyetchinh.jpg" />
     <Content Include="Content\login.css" />
     <Content Include="Content\menucateory.css" />
     <Content Include="img\imgMenuCateory\BestSeller.png" />
@@ -248,6 +250,9 @@
     <Content Include="Views\Admin\ViewProduct.cshtml" />
     <Content Include="Views\Admin\AddProduct.cshtml" />
     <Content Include="Views\Admin\UpdateProduct.cshtml" />
+    <Content Include="Views\Admin\Customers.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -126,13 +126,54 @@ namespace FastFoodWebsite.Services
                 {
                     connection.Open();
                 }
-                string selectStr = "SET DATEFORMAT DMY;UPDATE PRODUCTS SET PRODUCTNAME = '" + name+ "', PRODUCTDESCRIPTION = '" + description+ "', PRICE ="+price+", PICTURE = '"+img+ "', UPDATED_AT_OF_PROD ='"+updatedAt + "' , PROD_TYPE_ID ="+typeID + "' WHERE PRODUCTID =" + id;
+                string selectStr = "SET DATEFORMAT DMY;UPDATE PRODUCTS SET PRODUCTNAME = '" + name+ "', PRODUCTDESCRIPTION = '" + description+ "', PRICE ="+price+", PICTURE = '"+img+ "', UPDATED_AT_OF_PROD ='"+updatedAt + "' , PROD_TYPE_ID ="+typeID + " WHERE PRODUCTID =" + id;
                 SqlCommand cmd = new SqlCommand(selectStr, connection);
                 cmd.ExecuteNonQuery();
                 if (connection.State == System.Data.ConnectionState.Open)
                 {
                     connection.Close();
                 }
+            }
+        }
+        public Admin_Product getProductByID (int id)
+        {
+            using (SqlConnection connection = new SqlConnection(conStr))
+            {
+                if (connection.State == System.Data.ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
+                string selectStr = "SELECT * FROM PRODUCTS WHERE PRODUCTID ="+id;
+                SqlCommand cmd = new SqlCommand(selectStr, connection);
+                SqlDataReader rdr = cmd.ExecuteReader();
+                Admin_Product product = null;
+                while (rdr.Read())
+                {
+                    int pid = int.Parse(rdr["PRODUCTID"].ToString());
+                    string name = rdr["PRODUCTNAME"].ToString();
+                    string description = rdr["PRODUCTDESCRIPTION"].ToString();
+                    decimal price = decimal.Parse(rdr["PRICE"].ToString());
+                    string img = rdr["PICTURE"].ToString();
+                    string createdAt = rdr["CREATED_AT_OF_PROD"].ToString().Substring(0, 10);
+
+                    DateTime updateDate = new DateTime();
+
+                    if (!string.IsNullOrEmpty(rdr["UPDATED_AT_OF_PROD"].ToString()))
+                    {
+                        string updatedAt = rdr["UPDATED_AT_OF_PROD"].ToString().Substring(0, 10);
+                        updateDate = DateTime.ParseExact(updatedAt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    }
+
+                    DateTime createDate = DateTime.ParseExact(createdAt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    int typeID = int.Parse(rdr["PROD_TYPE_ID"].ToString());
+
+                    product = new Admin_Product(pid, name, description, price, img, createDate, updateDate, typeID);
+                }
+                if (connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+                return product;
             }
         }
 

@@ -82,9 +82,10 @@ namespace FastFoodWebsite.Controllers
             }
         }
 
-        public ActionResult UpdateProduct()
+        public ActionResult UpdateProduct(int id)
         {
-            return View();
+            Admin_Product p_ID = adminService.getProductByID(id);
+            return View(p_ID);
         }
         [HttpPost]
         public ActionResult UpdateProduct(Admin_Product product)
@@ -108,5 +109,10 @@ namespace FastFoodWebsite.Controllers
 
         }
 
+
+        public ActionResult Customers()
+        {
+            return View();
+        }
     }
 }

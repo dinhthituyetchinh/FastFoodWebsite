@@ -8,13 +8,15 @@
 <div class="mainAddProduct">
     <h2 class="text-center p-3">UPDATES PRODUCT</h2>
     <form method="post" action="~/Admin/UpdateProduct">
+        <input  type="hidden" name="productID" value="@Model.productID"/>
         <div class="form-floating mb-3">
             @Html.TextBoxFor(model => model.productName, new
        {
            @class = "form-control",
            id = "productName",
            placeholder = "Product Name",
-           value = "name",
+           value = Model.productName
+           //name = "name"
        })
             <label for="productName">Product Name</label>
             @Html.ValidationMessageFor(model => model.productName, "", new { @class = "text-danger" })
@@ -26,7 +28,8 @@
            @class = "form-control",
            id = "productDescription",
            placeholder = "Product Description",
-           value = "description"
+           value = Model.productDescription
+           //name = "description"
        })
             <label for="productDescription">Product Description</label>
             @Html.ValidationMessageFor(model => model.productDescription, "", new { @class = "text-danger" })
@@ -38,7 +41,8 @@
            @class = "form-control",
            id = "price",
            placeholder = "Price",
-           value = "price"
+           value = Model.price
+           //name = "price"
        })
             <label for="price">Price</label>
             @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
@@ -51,8 +55,8 @@
            @class = "form-control",
            type = "file",
            id = "image",
-           placeholder = "Image",
-           value = "img"
+           placeholder = "Image"
+           //name = "img"
        })
             <label for="Address">Image</label>
             @Html.ValidationMessageFor(model => model.images, "", new { @class = "text-danger" })
@@ -65,8 +69,8 @@
            @class = "form-control",
            type = "date",
            id = "UpdatedDate",
-           placeholder = "Updated Date",
-           value = "updatedDate"
+           placeholder = "Updated Date"
+           //name = "updatedDate"
        })
             <label for="UpdatedDate">Updated Date</label>
         </div>
@@ -84,8 +88,8 @@
        }, "Select product type", new
        {
            @class = "form-control",
-           id = "productType",
-           value = "typeID"
+           id = "productType"
+           //name = "typeID"
        })
             <label for="productType">Product Type</label>
             @Html.ValidationMessageFor(model => model.productTypeID, "", new { @class = "text-danger" })

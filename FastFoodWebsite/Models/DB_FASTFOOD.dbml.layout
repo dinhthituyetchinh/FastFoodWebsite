@@ -79,14 +79,14 @@
         <elementListCompartment Id="e2c5969c-c7d7-4ca7-b424-1564c3248552" absoluteBounds="1.3900000000000001, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.0625 : 3.125); (3.0625 : 2.4631982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.0625 : 3.125); (3.0625 : 2.4631982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DB_FASTFOODDataContext/PRODUCT/PRODUCT_CART" />
       <nodes>
         <classShapeMoniker Id="8060ec27-2fc9-4f93-9cee-b4720f5c7142" />
         <classShapeMoniker Id="de7c8a9e-1f59-4daf-a122-6d413c68a09b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.9375 : 4.25); (1.9375 : 2.4631982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.9375 : 4.25); (1.9375 : 2.4631982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DB_FASTFOODDataContext/USER/USER_CART" />
       <nodes>
         <classShapeMoniker Id="a7fc3061-a41a-436b-82bd-9d345944742e" />
