@@ -12,6 +12,52 @@ namespace FastFoodWebsite.Services
         {
             return db.CARTs.Where(c => c.USERID == userID).ToList(); 
         }
+
+        private ORDER createOrder(int userId)
+        {
+            ORDER newOrder = new ORDER();
+            newOrder.USERID = userId;
+            newOrder.TOTAL_PRICE = 0;
+            newOrder.STATUS_OF_ORDER = "Pending...";
+            db.ORDERs.InsertOnSubmit(newOrder);
+            db.SubmitChanges();
+
+            return newOrder;
+        }
+
+        private void deleteCart(int userID)
+        {
+            List<CART> carts = this.getCartByUserID(userID);
+
+            foreach (CART cart in carts)
+            {
+                db.CARTs.DeleteOnSubmit(cart);
+                db.SubmitChanges();
+            }
+        }
+
+        public void changeCartToOrderDetails(int userID)
+        {
+            List<CART> carts = this.getCartByUserID(userID);
+            ORDER newOrder = this.createOrder(userID);
+
+            ORDERDETAIL newORderDetail = new ORDERDETAIL();
+
+            foreach (CART cart in carts)
+            {
+                newORderDetail.ORDERID = newOrder.ORDERID;
+                newORderDetail.PRODUCTID = (int)cart.PRODUCTID;
+                newORderDetail.NOTES = cart.NOTES;
+                newORderDetail.QUANTITY = cart.QUANTITY;
+                newORderDetail.PRICE = cart.PRICE;
+
+                db.ORDERDETAILs.InsertOnSubmit(newORderDetail);
+                db.SubmitChanges();
+            }
+
+            this.deleteCart(userID);
+        }
+
         public void addCart(int userID,int productID, int num, string notes)
         {
 
@@ -50,5 +96,7 @@ namespace FastFoodWebsite.Services
             db.CARTs.DeleteOnSubmit(cartItem);
             db.SubmitChanges();
         }
+
+
     }
 }

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<FastFoodWebsite.Models.ORDER>
+
+@{
+    ViewBag.Title = "OrderView";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>OrderView</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.USERID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TOTAL_PRICE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATUS_OF_ORDER)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.USERID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TOTAL_PRICE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATUS_OF_ORDER)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ORDERID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ORDERID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ORDERID })
+        </td>
+    </tr>
+}
+
+</table>

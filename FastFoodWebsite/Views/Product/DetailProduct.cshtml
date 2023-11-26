@@ -13,28 +13,35 @@
             <form method="post" action="~/Cart/AddCart">
                 <hr />
                 <dl class="dl-horizontal">
-                    <dd>
+                    <dd class="text-center">
                         @Html.DisplayFor(model => model.PRODUCTNAME)
                     </dd>
 
-                    <dd>
+                    <dd class="text-center">
                         @Html.DisplayFor(model => model.PRODUCTDESCRIPTION)
                     </dd>
-                    <input type="hidden" name="prodID" value="@Model.PRODUCTID"/>
-                    <label>Số lượng</label>
-                    <input type="number" name="num" />
-                    <label>Ghi chú</label>
-                    <textarea style="height: 50px" name="notes"></textarea>
-                </dl>
-                <button class="btn btn-danger" type="submit">MUA NGAY</button>
+                    <input type="hidden" name="prodID" value="@Model.PRODUCTID" />
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="sl" name="num">
+                        <label for="sl">Số lượng</label>
+                    </div>
+        @*<label>Số lượng</label>
+        <input type="number" name="num" />*@
 
-            </form>
+        @*<label>Ghi chú</label>
+        <textarea style="height: 100px" name="notes"></textarea>*@
+        <div class="form-floating mb-3" style="height: 100px">
+
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="notes"></textarea>
+            <label for="floatingTextarea2">Comments</label>
         </div>
+
+        </dl>
+        <button class="btn btn-danger" type="submit">MUA NGAY</button>
+
+        </form>
+    </div>
     </div>
 </div>
 
-<div>
-    <a href="@Url.Action("AddCart", "Cart", new {@prodID = Model.PRODUCTID})" class="btn btn-danger" type="submit">MUA NGAY</a>
-    <a href="~/Product/Menu" class="btn btn-danger">MUA TIẾP</a>
-</div>
 

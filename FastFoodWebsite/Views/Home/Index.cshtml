@@ -6,7 +6,11 @@
 <link rel="stylesheet" href="~/Content/style.css" />
 
 <div class="w-100 p-3">
+    @if (ViewData["checkoutSuccess"] != null)
+    {
+        <h3 class="text-success">@ViewData["checkoutSuccess"]</h3>
 
+    }
 
     <div class="h-25">
         <div id="carouselExampleAutoplaying" class="carousel slide h-50" data-bs-ride="carousel">
@@ -38,15 +42,15 @@
 
 
 
-    <div class="text-bg-danger">
+    <div >
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
                     <a class="page-link">Previous</a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="@Url.Action("Menu", "Product")">1</a></li>
+                <li class="page-item"><a class="page-link" href="@Url.Action("AboutUs", "Home")">2</a></li>
+                <li class="page-item"><a class="page-link" href="@Url.Action("Contact", "Home")">3</a></li>
                 <li class="page-item">
                     <a class="page-link" href="#">Next</a>
                 </li>

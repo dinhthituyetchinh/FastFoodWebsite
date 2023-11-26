@@ -199,8 +199,8 @@ namespace FastFoodWebsite.Services
                     DateTime DayOfBirth = DateTime.ParseExact(dayOfBirth, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
                     string address = rdr["USERADDRESS"].ToString();
-                    string password = rdr["EMAIL"].ToString();
-                    string createdAt = rdr["USERPASSWORD"].ToString().Substring(0, 10);
+                    string password = rdr["USERPASSWORD"].ToString();
+                    string createdAt = rdr["CREATEDAT"].ToString().Substring(0, 10);
 
                     DateTime updateDate = new DateTime();
 

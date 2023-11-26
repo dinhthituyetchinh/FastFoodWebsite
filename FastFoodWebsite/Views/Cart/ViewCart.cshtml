@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
-<h2>ViewCart</h2>
+<h2 class="text-center">ViewCart</h2>
 @if (ViewData["NoProduct"] != null)
 {
     <h3>@ViewData["NoProduct"]</h3>
@@ -63,11 +63,12 @@ else
             </tr>
 
         }
-        <tr>
-            <button class="btn btn-danger" type="submit">CHECK OUT</button>
 
-        </tr>
     </table>
+    <div class="d-grid gap-2 col-6 mx-auto p-3">
+        <a href="@Url.Action("CheckOut", "Cart")" class="btn btn-danger justify-content-lg-between" type="submit">CHECK OUT</a>
+
+    </div>
 
 </form>
 

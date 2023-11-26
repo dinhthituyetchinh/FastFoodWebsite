@@ -118,6 +118,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\main_img.png" />
     <Content Include="Content\img\tuyetchinh.jpg" />
     <Content Include="Content\login.css" />
@@ -256,6 +257,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Admin\ResetPassword.cshtml" />
+    <Content Include="Views\Order\OrderView.cshtml" />
+    <Content Include="Views\Order\DetailOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -265,7 +268,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

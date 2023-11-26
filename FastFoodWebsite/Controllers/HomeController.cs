@@ -11,6 +11,7 @@ namespace FastFoodWebsite.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            ViewData["checkoutSuccess"] = TempData["checkoutSuccess"];
             return View();
         }
         public ActionResult AboutUs()

@@ -115,9 +115,10 @@ namespace FastFoodWebsite.Controllers
             return View();
         }
 
-        public ActionResult ResetPassword(int id)
+        public ActionResult ResetPassword()
         {
-            User user = adminService.getUserByID(id);
+            USER currentUser = Session["user"] as USER;
+            User user = adminService.getUserByID(currentUser.USERID);
             return View(user);
         }
         [HttpPost]

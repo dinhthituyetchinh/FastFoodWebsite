@@ -18,7 +18,7 @@
         <div class="navAdmin">
             <ul>
                 <li>
-                    <a href="@Url.Action("ViewAccount", "Account")">
+                    <a href="#">
                         <span class="icon"><i class='bx bx-user-circle'></i></span>
                         <span class="title">Brand Name</span>
                     </a>
@@ -42,12 +42,12 @@
                     </a>
                 </li>
 
-                <li>
+                @*<li>
                     <a href="#">
                         <span class="icon"><i class='bx bx-help-circle'></i></span>
                         <span class="title">Help</span>
                     </a>
-                </li>
+                </li>*@
                 <li>
                     <a href="@Url.Action("ViewAccount", "Account")">
                         <span class="icon"><i class='bx bx-cog'></i></span>
@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="@Url.Action("ResetPassword", "Admin")">
                         <span class="icon"><i class='bx bx-lock-alt'></i></span>
                         <span class="title">Password</span>
                     </a>
@@ -84,7 +84,9 @@
                 </div>
 
                 <div class="user">
-                    <img src="~/Content/img/tuyetchinh.jpg" />
+                    <a href="@Url.Action("ViewAccount", "Account")">
+                        <img src="~/Content/img/tuyetchinh.jpg" />
+                    </a>
                 </div>
             </div>
 

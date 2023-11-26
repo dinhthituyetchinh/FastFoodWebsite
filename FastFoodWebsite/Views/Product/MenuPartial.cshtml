@@ -18,8 +18,8 @@
             {
         <p>
             <strong title="@item.PRODUCTNAME" >@item.PRODUCTNAME</strong> <br />
-            <strong class="text-bg-danger mb-3">@item.PRODUCTDESCRIPTION VNĐ</strong> <br />
-            <strong>@item.PRICE</strong>
+            <p class="mb-3">@item.PRODUCTDESCRIPTION VNĐ</p> <br />
+            <p>@item.PRICE</p>
 
             <a href="@Url.Action("DetailProduct", "Product", new {@id = item.PRODUCTID})">Xem chi tiết</a>
         </p>

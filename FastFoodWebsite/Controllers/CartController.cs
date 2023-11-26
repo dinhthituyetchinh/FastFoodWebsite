@@ -35,5 +35,17 @@ namespace FastFoodWebsite.Controllers
             return RedirectToAction("ViewCart", "Cart");
 
         }
+
+        public ActionResult CheckOut()
+        {
+            USER currentUser = Session["user"] as USER;
+
+            cartService.changeCartToOrderDetails(currentUser.USERID);
+
+            TempData["checkoutSuccess"] = "Checkout success!";
+            return RedirectToAction("Index", "Home");
+        }
+
+       
     }
 }
