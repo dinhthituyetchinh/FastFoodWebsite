@@ -114,5 +114,31 @@ namespace FastFoodWebsite.Controllers
         {
             return View();
         }
+
+        public ActionResult ResetPassword(int id)
+        {
+            User user = adminService.getUserByID(id);
+            return View(user);
+        }
+        [HttpPost]
+        public ActionResult ResetPassword(User u)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    adminService.updatePassword(u.UserId, u.fullName, u.phone, u.email, u.password, u.confirmPassword, u.UpdatedDate, u.roleID);
+                    return View();// để tạm, cho hiện lên cập nhật thành công
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+        }
     }
 }

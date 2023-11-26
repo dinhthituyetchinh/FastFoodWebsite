@@ -1,4 +1,4 @@
-﻿@model FastFoodWebsite.Models.AccountLogIn
+﻿@model FastFoodWebsite.Models.Contact
 
 @{
     ViewBag.Title = "Contact";
@@ -14,45 +14,52 @@
         <form method="post" action="#">
             @Html.ValidationSummary(true)
             <div class="form-floating mb-3">
-                @*@Html.TextBoxFor(model => model.fullName, new
+                @Html.TextBoxFor(model => model.fullName, new
             {
                 @class = "form-control",
                 id = "fullName",
                 placeholder = "Full Name"
-            })*@
-                <input type="text" class="form-control" id="fullName" placeholder="Full Name">
+            })
+                @*<input type="text" class="form-control" id="fullName" placeholder="Full Name">*@
                 <label for="fullName">Full name</label>
-                @*@Html.ValidationMessageFor(model => model.fullName, "", new { @class = "text-danger" })*@
+                @Html.ValidationMessageFor(model => model.fullName, "", new { @class = "text-danger" })
 
             </div>
             <div class="form-floating mb-3">
-                @*@Html.TextBoxFor(model => model.phone, new
+                @Html.TextBoxFor(model => model.phone, new
             {
                 @class = "form-control",
                 id = "phone",
                 placeholder = "Phone"
-            })*@
-                <input type="text" class="form-control" id="phone" placeholder="Phone">
+            })
+                @*<input type="text" class="form-control" id="phone" placeholder="Phone">*@
                 <label for="phone">Phone</label>
-                @*@Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })*@
+                @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
 
             </div>
             <div class="form-floating mb-3">
-                @*@Html.TextBoxFor(model => model.email, new
+                @Html.TextBoxFor(model => model.email, new
             {
                 @class = "form-control",
                 type = "email",
                 id = "floatingInput",
                 placeholder = "name@example.com"
-            })*@
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            })
+                @*<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">*@
                 <label for="floatingInput">Email address</label>
-                @*@Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })*@
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
 
             </div>
-            <div class="form-floating mb-3">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <div class="form-floating mb-3" style="height: 100px">
+                @Html.TextAreaFor(model => model.comments, new
+           {
+               @class = "form-control",
+               id = "floatingTextarea2",
+               placeholder = "name@example.com"
+           })
+                @*<textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>*@
                 <label for="floatingTextarea2">Comments</label>
+                @Html.ValidationMessageFor(model => model.comments, "", new { @class = "text-danger" })
             </div>
             <div class="d-grid gap-2 col-6 mx-auto p-3">
                 <button type="submit" class="btn btn-danger justify-content-lg-between">SEND</button>

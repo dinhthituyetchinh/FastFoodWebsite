@@ -177,5 +177,73 @@ namespace FastFoodWebsite.Services
             }
         }
 
+        public User getUserByID(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(conStr))
+            {
+                if (connection.State == System.Data.ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
+                string selectStr = "SELECT * FROM USERS WHERE USERID =" + id;
+                SqlCommand cmd = new SqlCommand(selectStr, connection);
+                SqlDataReader rdr = cmd.ExecuteReader();
+                User user = null;
+                while (rdr.Read())
+                {
+                    int uID = int.Parse(rdr["USERID"].ToString());
+                    string name = rdr["FULLNAME"].ToString();
+                    string phone = rdr["PHONE"].ToString();
+                    string email = rdr["EMAIL"].ToString();
+                    string dayOfBirth = rdr["DAYOFBIRTH"].ToString().Substring(0, 10);
+                    DateTime DayOfBirth = DateTime.ParseExact(dayOfBirth, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                    string address = rdr["USERADDRESS"].ToString();
+                    string password = rdr["EMAIL"].ToString();
+                    string createdAt = rdr["USERPASSWORD"].ToString().Substring(0, 10);
+
+                    DateTime updateDate = new DateTime();
+
+                    if (!string.IsNullOrEmpty(rdr["UPDATEDAT"].ToString()))
+                    {
+                        string updatedAt = rdr["UPDATEDAT"].ToString().Substring(0, 10);
+                        updateDate = DateTime.ParseExact(updatedAt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    }
+
+                    DateTime createDate = DateTime.ParseExact(createdAt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    int roleID = int.Parse(rdr["ROLEID"].ToString());
+
+                    user = new User(uID, name, phone, email, DayOfBirth, address, password, createDate, updateDate, roleID);
+                }
+                if (connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+                return user;
+            }
+        }
+        public void updatePassword(int userId, string fullName, string phone, string email, string password, string confirmPassword, DateTime updatedDate, int roleID)
+        {
+            string updatedAt = updatedDate.ToString().Substring(0, 10);
+
+            using (SqlConnection connection = new SqlConnection(conStr))
+            {
+                if (connection.State == System.Data.ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
+                string selectStr = "SET DATEFORMAT DMY;UPDATE USERS SET FULLNAME = '" + fullName + "', PHONE = '" + phone + ", EMAIL = '" + email + "', UPDATEDAT ='" + updatedAt + "' , ROLEID =" + roleID + " WHERE USERID =" + userId;
+                SqlCommand cmd = new SqlCommand(selectStr, connection);
+                cmd.ExecuteNonQuery();
+                if (connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+
+
+
     }
 }
