@@ -6,71 +6,74 @@
 }
 
 <h2 class="text-center">ViewCart</h2>
-@if (ViewData["NoProduct"] != null)
-{
-    <h3>@ViewData["NoProduct"]</h3>
-}
-else
-{
-<form method="post" action="~/Order/OrderView">
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PRODUCTID)
-            </th>
-            <th>
-                Số lượng
-            </th>
-            <th>
-                Giá
-            </th>
-            <th>
-                Ghi chú
-            </th>
-        </tr>
+<div style="padding-top: 70px">
+    @if (ViewData["NoProduct"] != null)
+    {
+        <h3>@ViewData["NoProduct"]</h3>
+    }
+    else
+    {
+        <form method="post" action="~/Order/OrderView">
+            <table class="table">
+                <tr>
+                    <th>
+                        Hình ảnh
+                    </th>
+                    <th>
+                        Số lượng
+                    </th>
+                    <th>
+                        Giá
+                    </th>
+                    <th>
+                        Ghi chú
+                    </th>
+                </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PRODUCTID)
-                </td>
-                <td>
-                    <input type="number" class="changePrice" value="@item.QUANTITY" />
-                    @*@Html.DisplayFor(modelItem => item.QUANTITY)*@
-                </td>
-                <td class="price">
-                    @Html.DisplayFor(modelItem => item.PRICE)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NOTES)
-                </td>
-                <td>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/img/imgProduct/@item.PRODUCT.PICTURE" width="100px" height="100px" />
+                        </td>
+                        <td>
+                            @*<input type="number" class="changePrice" value="@item.QUANTITY" style="width: 50px; height: 30px" />*@
+                            @Html.DisplayFor(modelItem => item.QUANTITY)
+                        </td>
+                        <td class="price">
+                            @Html.DisplayFor(modelItem => item.PRICE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NOTES)
+                        </td>
+                        <td>
 
-                    <a href="@Url.Action("DetailProduct", "Product", new {@id = item.PRODUCTID})">
-                        <div class="img"><img src="~/img/imgOfCart/icons8-edit-64.png" alt="img"></div>
-                    </a>
-                </td>
+                            <a href="@Url.Action("DetailProduct", "Product", new {@id = item.PRODUCTID})">
+                                <div class="img"><img src="~/img/imgOfCart/icons8-edit-64.png" alt="img" style="width: 40px; height: 40px"></div>
+                            </a>
+                        </td>
 
-                <td>
+                        <td>
 
-                    <a href="@Url.Action("Deleted", "Cart", new {@prodID = item.PRODUCTID})">
-                        <div class="img"><img src="~/img/imgOfCart/icons8-delete-64.png" alt="img"></div>
-                    </a>
+                            <a href="@Url.Action("Deleted", "Cart", new {@prodID = item.PRODUCTID})">
+                                <div class="img"><img src="~/img/imgOfCart/icons8-delete-64.png" alt="img" style="width: 50px; height: 50px"></div>
+                            </a>
 
-                </td>
+                        </td>
 
-            </tr>
+                    </tr>
 
-        }
+                }
 
-    </table>
-    <div class="d-grid gap-2 col-6 mx-auto p-3">
-        <a href="@Url.Action("CheckOut", "Cart")" class="btn btn-danger justify-content-lg-between" type="submit">CHECK OUT</a>
+            </table>
+            <div class="d-grid gap-2 col-6 mx-auto p-3">
+                <a href="@Url.Action("CheckOut", "Cart")" class="btn btn-danger justify-content-lg-between" type="submit">CHECK OUT</a>
 
-    </div>
+            </div>
 
-</form>
+        </form>
 
-    <script src="~/Scripts/Cart.js"></script>
-}
+        <script src="~/Scripts/Cart.js"></script>
+    }
+</div>
+

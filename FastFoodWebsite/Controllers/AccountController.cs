@@ -77,5 +77,32 @@ namespace FastFoodWebsite.Controllers
             USER user = Session["user"] as USER;
             return View(user);
         }
+
+        public ActionResult ChangePassword()
+        {
+            USER currentUser = Session["user"] as USER;
+            USER user = db.USERs.Single(id => id.USERID == currentUser.USERID);
+            return View(user);
+        }
+        [HttpPost]
+        public ActionResult ChangePassword(USER u)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    //adminService.updatePassword(u.UserId, u.fullName, u.phone, u.email, u.password, u.confirmPassword, u.UpdatedDate, u.roleID);
+                    return View();
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+        }
     }
 }

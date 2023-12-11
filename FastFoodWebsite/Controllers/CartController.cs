@@ -26,8 +26,16 @@ namespace FastFoodWebsite.Controllers
         public ActionResult AddCart(int prodID, int num, string notes)
         {
             USER user = Session["user"] as USER;
-            cartService.addCart(user.USERID, prodID, num, notes);
-            return RedirectToAction("ViewCart");
+            if(user == null)
+            {
+               return RedirectToAction("LogIn", "Account");
+            }
+            else
+            {
+                cartService.addCart(user.USERID, prodID, num, notes);
+                return RedirectToAction("ViewCart");
+            }
+
         }
         public ActionResult Deleted(int prodID)
         {          

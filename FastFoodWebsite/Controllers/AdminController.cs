@@ -21,11 +21,6 @@ namespace FastFoodWebsite.Controllers
         {
             try
             {
-                //List<Subject> filterSubject = TempData["filterSubject"] as List<Subject>;
-                //if (filterSubject != null && filterSubject.Count > 0)
-                //{
-                //    return View(filterSubject);
-                //}
 
                 ViewData["Err"] = TempData["Err"];
                 List<Admin_Product> p = adminService.ExcuteSQL();

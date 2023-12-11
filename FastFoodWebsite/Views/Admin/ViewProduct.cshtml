@@ -9,9 +9,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th>PRODUCT ID</th>
-                <th>PRODUCT NAME</th>
-                <th>PRODUCT DESCRIPTION</th>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>DESCRIPTION</th>
                 <th>PRICE</th>
                 <th>IMAGE</th>
                 <th>CREATED DATE</th>
@@ -29,7 +29,7 @@
                     <td>@item.productName</td>
                     <td>@item.productDescription</td>
                     <td>@item.price</td>
-                    <td><img src="@Url.Content("~/img/imgProduct/"+item.images)" width="70%" height="70%" style="padding: 5px" /></td>
+                    <td><img src="@Url.Content("~/img/imgProduct/"+item.images)" width="70px" height="70px" style="padding: 5px" /></td>
                     <td>@item.CreatedDate</td>
                     <td>@item.UpdatedDate</td>
                     <td>@item.productTypeID</td>
@@ -48,9 +48,7 @@
             @ViewData["Err"]
         }
     </p>
-  
-    <p></p>
-    <div class="d-grid gap-2 col-6 mx-auto">
+      <div class="d-grid gap-2 col-6 mx-auto">
         <a href="~/Admin/AddProduct" type="button" class="btn btn-danger text-uppercase"> Add product</a>
     </div>
 </div>

@@ -126,7 +126,7 @@ namespace FastFoodWebsite.Services
                 {
                     connection.Open();
                 }
-                string selectStr = "SET DATEFORMAT DMY;UPDATE PRODUCTS SET PRODUCTNAME = '" + name+ "', PRODUCTDESCRIPTION = '" + description+ "', PRICE ="+price+", PICTURE = '"+img+ "', UPDATED_AT_OF_PROD ='"+updatedAt + "' , PROD_TYPE_ID ="+typeID + " WHERE PRODUCTID =" + id;
+                string selectStr = "SET DATEFORMAT DMY;UPDATE PRODUCTS SET PRODUCTNAME = 'N" + name+ "', PRODUCTDESCRIPTION = 'N" + description+ "', PRICE ="+price+", PICTURE = 'N"+img+ "', UPDATED_AT_OF_PROD ='"+updatedAt + "' , PROD_TYPE_ID ="+typeID + " WHERE PRODUCTID =" + id;
                 SqlCommand cmd = new SqlCommand(selectStr, connection);
                 cmd.ExecuteNonQuery();
                 if (connection.State == System.Data.ConnectionState.Open)

@@ -1,5 +1,6 @@
 ﻿@model List<FastFoodWebsite.Models.PRODUCT>
 
+
 <div class="row text-center">
     @foreach (var item in Model)
     {
@@ -9,21 +10,34 @@
             {
                 <p>
                     <strong title="@item.PRODUCTNAME">@item.PRODUCTNAME.Substring(0, 30)....</strong>
-                    <strong>@item.PRODUCTDESCRIPTION</strong>
-                    <strong>@item.PRICE</strong>
-                    <a href="@Url.Action("DetailProduct", "Product", new {@id = item.PRODUCTID})">Đặt hàng</a>
+                <P>@item.PRODUCTDESCRIPTION</P>
+                <P>@item.PRICE VNĐ</P>
+                <a href="@Url.Action("DetailProduct", "Product", new {@id = item.PRODUCTID})" class="btn btn-danger mb-3">Đặt hàng</a>
                 </p>
             }
             else
             {
-        <p>
-            <strong title="@item.PRODUCTNAME" >@item.PRODUCTNAME</strong> <br />
-            <p class="mb-3">@item.PRODUCTDESCRIPTION VNĐ</p> <br />
-            <p>@item.PRICE</p>
+                <p>
+                    <strong title="@item.PRODUCTNAME">@item.PRODUCTNAME</strong> <br />
+                <p class="mb-3">@item.PRODUCTDESCRIPTION</p> <br />
+                <p>@item.PRICE VNĐ</p>
 
-            <a href="@Url.Action("DetailProduct", "Product", new {@id = item.PRODUCTID})">Xem chi tiết</a>
-        </p>
+                <a href="@Url.Action("DetailProduct", "Product", new {@id = item.PRODUCTID})" class="btn btn-danger mb-3">Đặt hàng</a>
+
+                </p>
             }
         </div>
     }
 </div>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination" style="justify-content: center;">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+
+        @for (int i = 1; i <= ViewBag.pageSize; i++)
+        {
+            <li class="page-item"><a class="page-link" href="#">@i</a></li>
+        }
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+</nav>

@@ -32,7 +32,7 @@
             </ul>
 
             <div class="icon">
-                <a><i class='bx bx-search-alt-2'></i></a>
+                @*<a><i class='bx bx-search-alt-2'></i></a>*@
                 @if (Session["user"] != null)
                 {
                     <a href="@Url.Action("ViewAccount", "Account")"><i class='bx bx-user-circle'></i></a>
@@ -60,7 +60,7 @@
 
             <div class="footer_tag">
 
-                <h2>Location</h2>
+                <h3>Location</h3>
                 <p>Viet Nam</p>
                 <p>Korea</p>
                 <p>Japan</p>
@@ -70,7 +70,7 @@
 
             <div class="footer_tag">
 
-                <h2>Quick Link</h2>
+                <h3>Quick Link</h3>
                 <p>Home</p>
                 <p>About</p>
                 <p>Menu</p>
@@ -81,7 +81,7 @@
 
             <div class="footer_tag">
 
-                <h2>Contact</h2>
+                <h3>Contact</h3>
                 <p>+84 38 9420 206</p>
                 <p>+84 12 5768 456</p>
                 <p>fengdinh@gmail.com</p>
@@ -90,7 +90,7 @@
 
             <div class="footer_tag">
 
-                <h2>Our Services</h2>
+                <h3>Our Services</h3>
                 <p>Fast Delivery</p>
                 <p>Easy Payments</p>
                 <p>24 x 7 Service</p>
@@ -99,7 +99,7 @@
 
             <div class="footer_tag">
 
-                <h2>Follows</h2>
+                <h3>Follows</h3>
                 <i class="fa-brands fa-facebook-f"></i>
                 <i class="fa-brands fa-twitter"></i>
                 <i class="fa-brands fa-instagram"></i>
@@ -112,5 +112,10 @@
         <p class="end">Design by<span>Đinh Thị Tuyết Chinh</span></p>
 
     </footer>
+
+    <script src="~/Scripts/bootstrap.esm.min.js" ></script>
+    <script src="~/Scripts/bootstrap.js" ></script>
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

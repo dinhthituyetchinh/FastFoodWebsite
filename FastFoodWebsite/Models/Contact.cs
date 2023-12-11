@@ -8,7 +8,6 @@ namespace FastFoodWebsite.Models
 {
     public class Contact
     {
-        public int contactID { get; set; }
 
        [Required(ErrorMessage = "Họ tên không để trống")]
         public string fullName { get; set; }
@@ -26,9 +25,8 @@ namespace FastFoodWebsite.Models
 
         }
 
-        public Contact(int contactID, string fullName, string phone, string email, string comments)
+        public Contact(string fullName, string phone, string email, string comments)
         {
-            this.contactID = contactID;
             this.fullName = fullName;
             this.phone = phone;
             this.email = email;

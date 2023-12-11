@@ -13,7 +13,7 @@
             <form method="post" action="~/Cart/AddCart">
                 <hr />
                 <dl class="dl-horizontal">
-                    <dd class="text-center">
+                    <dd class="text-center fw-bolder">
                         @Html.DisplayFor(model => model.PRODUCTNAME)
                     </dd>
 
@@ -22,26 +22,44 @@
                     </dd>
                     <input type="hidden" name="prodID" value="@Model.PRODUCTID" />
                     <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="sl" name="num">
+                        <input type="number" class="form-control quantity" id="sl" name="num">
                         <label for="sl">Số lượng</label>
                     </div>
-        @*<label>Số lượng</label>
-        <input type="number" name="num" />*@
+                    <div class="form-floating mb-3" style="height: 100px">
 
-        @*<label>Ghi chú</label>
-        <textarea style="height: 100px" name="notes"></textarea>*@
-        <div class="form-floating mb-3" style="height: 100px">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="notes"></textarea>
+                        <label for="floatingTextarea2">Comments</label>
+                    </div>
 
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="notes"></textarea>
-            <label for="floatingTextarea2">Comments</label>
+                </dl>
+                <button class="btn btn-danger mb-3 btnBuy" type="submit">MUA NGAY</button>
+                @*<a href="@Url.Action("Menu", "Product")" class="btn btn-danger mb-3">Mua tiếp</a>*@
+
+
+            </form>
         </div>
-
-        </dl>
-        <button class="btn btn-danger" type="submit">MUA NGAY</button>
-
-        </form>
-    </div>
     </div>
 </div>
+
+<script>
+    const quantityInput = document.querySelector('.quantity');
+    const btnBuy = document.querySelector('.btnBuy');
+
+    quantityInput.addEventListener('change', (e) => {
+        if (e.target.value <= 0) {
+            quantityInput.value = 0;
+            btnBuy.classList.add('disabled');
+        } else {
+            btnBuy.classList.remove('disabled');
+        }
+    })
+
+    if (quantityInput.value == 0 || quantityInput.value == "" || quantityInput.value == null) {
+        console.log('hi')
+        btnBuy.classList.add('disabled');
+    } else {
+        btnBuy.classList.remove('disabled');
+    }
+</script>
 
 

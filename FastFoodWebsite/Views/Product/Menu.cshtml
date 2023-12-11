@@ -1,10 +1,12 @@
 ﻿
+@model List<FastFoodWebsite.Models.PRODUCT>
+
 @{
     ViewBag.Title = "Menu";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 @*<link rel="stylesheet" href="~/Content/menuCateory.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">*@
 @*<div style="padding: 20px">
     <div class="wrapper">
         <i id="left" class="fa-solid fa-angle-left"></i>
@@ -16,16 +18,16 @@
                     <h2 class="text-uppercase">Best seller</h2>
                 </a>
             </li>
-            
+
             <li class="card">
                 <a href="@Url.Action("MenuPartial", "Product")">
                     <div class="img"><img src="~/img/imgMenuCateory/drinks.jpg" alt="img" draggable="false"></div>
                     <h2 class="text-uppercase">Drinks</h2>
                 </a>
-               
+
             </li>
             <li class="card">
-                
+
                 <div class="img"><img src="images/img-3.jpg" alt="img" draggable="false"></div>
                 <h2>Lariach French</h2>
             </li>
@@ -41,10 +43,57 @@
         <i id="right" class="fa-solid fa-angle-right"></i>
     </div>*@
 
-    <div>
-        @Html.Action("MenuPartial", "Product")
+<div>
+    @*@Html.Action("MenuPartial", "Product")*@
+    <div class="row text-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-4">
+                <img src="@Url.Content("~/img/imgProduct/"+item.PICTURE)" class="w-100" />
+                @if (item.PRODUCTNAME.Length > 30)
+                {
+                    <p>
+                        <strong title="@item.PRODUCTNAME">@item.PRODUCTNAME.Substring(0, 30)....</strong>
+                    <P>@item.PRODUCTDESCRIPTION</P>
+                    <P>@item.PRICE VNĐ</P>
+                    <a href="@Url.Action("DetailProduct", "Product", new {@id = item.PRODUCTID})" class="btn btn-danger mb-3">Đặt hàng</a>
+                    </p>
+                }
+                else
+                {
+                    <p>
+                        <strong title="@item.PRODUCTNAME">@item.PRODUCTNAME</strong> <br />
+                    <p class="mb-3">@item.PRODUCTDESCRIPTION</p> <br />
+                    <p>@item.PRICE VNĐ</p>
+
+                    <a href="@Url.Action("DetailProduct", "Product", new {@id = item.PRODUCTID})" class="btn btn-danger mb-3">Đặt hàng</a>
+
+                    </p>
+                }
+            </div>
+        }
     </div>
+
+    <nav aria-label="Page navigation example">
+
+        <ul class="pagination" style="justify-content: center;">
+            <li class="page-item">
+            <a class="page-link @(ViewBag.currentPage - 1 <= 0 ? "disabled" : "")" href="~/Product/Menu?pageNo=@(ViewBag.currentPage - 1)">Previous</a>
+            </li>
+
+            @for (int i = 1; i <= ViewBag.pageSize; i++)
+            {
+                <li class="page-item">
+                     <a class="page-link @(i == ViewBag.currentPage ? "active" : "")" href="~/Product/Menu?pageNo=@i">@i</a>
+                </li>
+            }
+            <li class="page-item"><a class="page-link @(ViewBag.currentPage + 1 > ViewBag.pageSize ? "disabled" : "")" href="~/Product/Menu?pageNo=@(ViewBag.currentPage + 1)">Next</a></li>
+        </ul>
+    </nav>
+
 </div>
+
+
 
 <script src="~/Scripts/menuScript.js"></script>
 
